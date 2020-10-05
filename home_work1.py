@@ -104,15 +104,15 @@ def reverse_guessing_game(max_n: int) -> None:
 def main():
 
     """ TASK 1"""
-    # ex = TextHandler(file_name="text_example.txt")
-    # print("Initial Text:")
-    # print(ex.TEXT)
-    # print("Top list:")
-    # print(ex.count_all_words())
-    # for num, word in enumerate(ex.find_top_of_words(), 1):
-    #     print(f"{num}) {word}")
-    # print("Reverse text sentences:")
-    # print(ex.reverse_text_sentences())
+    ex = TextHandler(file_name="text_example.txt")
+    print("Initial Text:")
+    print(ex.TEXT)
+    print(ex.count_all_words())
+    print("Top list:")
+    for num, word in enumerate(ex.find_top_of_words(), 1):
+        print(f"{num}) {word}")
+    print("Reverse text sentences:")
+    print(ex.reverse_text_sentences())
 
     # """ TASK 2"""
     # print("Strange prime number is: ", get_strange_prime_number())
