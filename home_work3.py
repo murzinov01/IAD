@@ -62,8 +62,8 @@ def generate_file_names(list_file_names: list, path=r".\\") -> None:
 
 # TASK 3
 
-"""
 
+"""
 def float_range(*args, **kwargs):
     if len(args) > 3 or len(kwargs) > 3:
         print("ERROR: Incorrect number of arguments")
@@ -98,11 +98,11 @@ def float_range(*args, **kwargs):
         start += step
 
 
-example = float_range(6.5)
+example = float_range(start=6.5, end=10.0, step=2.0)
 for el in example:
     print(el, end=", ")    
-"""
 
+"""
 """
 def minutes_range(*args, **kwargs):
     if len(args) > 3 or len(kwargs) > 3:
@@ -139,19 +139,20 @@ def minutes_range(*args, **kwargs):
         start += step
 
 
-example = minutes_range(start=[2, 10, 0], end=[3, 11, 20], step=[0, 15, 20])
+example = minutes_range(start=[23, 10, 0], end=[3, 11, 20], step=[0, 15, 20])
 for el in example:
     print(el, end=", ")
-"""
 
+"""
 
 # TASK 4
-"""
+
+
 def my_enumerate(_collection):
     if type(_collection) is dict:
         counter = 0
         for key, value in _collection.items():
-            yield counter, key, value
+            yield counter, (key, value)
             counter += 1
     elif type(_collection) is str or list or tuple:
         for i in range(len(_collection)):
@@ -159,6 +160,7 @@ def my_enumerate(_collection):
     else:
         print("ERROR: Incorrect type for enumerate.")
         exit()
+
 
 example_list = [5, 3, 4, 2]
 example_str = "Hello World!"
@@ -170,4 +172,3 @@ for collection in (my_enumerate(example_list), my_enumerate(example_tuple),
     for el in collection:
         print(el, end=", ")
     print()
-"""
