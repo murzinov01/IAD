@@ -2,6 +2,7 @@ import random
 import itertools
 
 
+# TASK 1
 def generate_sample(size: int, probability: float) -> list:
     return [1 if random.random() < probability else 0 for i in range(size)]
 
@@ -10,6 +11,7 @@ def generate_experience(number_of_exp: int, size: int, probability: float) -> li
     return [sum(generate_sample(size, probability)) for i in range(number_of_exp)]
 
 
+# TASK 2
 def generate_string(string: str, size: int, repeat: False) -> str:
     if not repeat and size > len(string):
         print("ERROR: there are more characters in the output string than in the input string!!")
@@ -30,6 +32,7 @@ def generate_string(string: str, size: int, repeat: False) -> str:
     return result
 
 
+# TASK 3
 def generate_various_strings_by_str(string: str) -> set:
     return {"".join(item) for item in itertools.permutations(string, len(string))}
 
