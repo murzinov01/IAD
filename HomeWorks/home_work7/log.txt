@@ -1,0 +1,16 @@
+wrap(('25', '')) -> 75025
+fibonacci(('25', '')) -> 75025
+fibonacci(25, ) -> 75025
+print_word_and_hello(Ivan) -> None
+print_word_and_hello(Ivan, second_word=Python) -> None
+calculate_distance(0, 2, 5, 4)
+calculate_distance(0, 2, 5, 4)
+print_word_and_hello(Ivan, second_word=Python)
+print_word_and_hello(Ivan, second_word=Python)
+print_word_and_hello(Ivan, second_word=Python)
+print_word_and_hello(Ivan, second_word=Python)
+print_word_and_hello(Ivan, second_word=Python)
+print_word_and_hello(Ivan, second_word=Python)
+print_word_and_hello(Ivan, second_word=Python)
+print_word_and_hello(Ivan, second_word=Python)
+print_word_and_hello(Ivan, second_word=Python)
