@@ -155,7 +155,6 @@ class AirQualityHandler:
             return None
 
         data = self.create_correct_data()
-        date = dict()
         max_values = [self.find_concentration_limits(token, limit="max")[token] for token in self.TOKENS]
 
         for row in data:
@@ -196,7 +195,7 @@ class AirQualityHandler:
                         target_entries.append(data[i])
         return target_entries
 
-    def find_local_minimums(self, token: str, period=3) -> list:
+    def find_local_minimums(self, token: str, period=3) -> list or None:
         if token not in self.TOKENS:
             print("ERROR: invalid token's name")
             return None
@@ -205,7 +204,7 @@ class AirQualityHandler:
         target_points = self.find_target_points(data, token, period=period, increase=False)
         return self.find_target_points(target_points, token, period=period, increase=True)
 
-    def find_local_maximums(self, token: str, period=3) -> list:
+    def find_local_maximums(self, token: str, period=3) -> list or None:
         if token not in self.TOKENS:
             print("ERROR: invalid token's name")
             return None
@@ -214,7 +213,7 @@ class AirQualityHandler:
         target_points = self.find_target_points(data, token, period=period, increase=True, extremum='max')
         return self.find_target_points(target_points, token, period=period, increase=False, extremum='max')
 
-    def find_time_of_frequent_minimums(self, token: str) -> str:
+    def find_time_of_frequent_minimums(self, token: str) -> str or None:
         if token not in self.TOKENS:
             print("ERROR: invalid token's name")
             return None
@@ -224,7 +223,7 @@ class AirQualityHandler:
             times[minimum["Time"]] += 1
         return max(times.items(), key=lambda x: x[1])[0]
 
-    def find_time_of_frequent_maximums(self, token: str) -> str:
+    def find_time_of_frequent_maximums(self, token: str) -> str or None:
         if token not in self.TOKENS:
             print("ERROR: invalid token's name")
             return None
