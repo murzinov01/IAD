@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lab_1.Exploratory_analysis</title><script type="text/javascript" src="/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=VVr7rWuJrZN9uT2oIQCHvGknNK0k3-349LHgENHaIzqSkUcOi3qTXLwi7olE6UNB0aWu6ljL936KcQ3YFfrezfQNxiCxVudVZSMox7fO27UnBrR0nep_Ro5h76CmDkfwzB1y0918XQW3RVecFdrx1g" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Lab_1.Exploratory_analysis</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -19638,6 +19638,227 @@ Math students 1.6527777777777777 VS 2.25 Por students
 </ul>
 <p>Оцените распределение нового признака в зависимости от признака <code>reason</code> (причина выбора школы). Дайте содержательный комментарий.</p>
 
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">newDf</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">marks</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Excellent&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+         <span class="s2">&quot;Good&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+         <span class="s2">&quot;Satisfactory&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+         <span class="s2">&quot;Unsatisfactory&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+
+<span class="n">new_column</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">g_3</span> <span class="ow">in</span> <span class="n">newDf</span><span class="p">[</span><span class="s2">&quot;G3&quot;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="mi">18</span> <span class="o">&lt;=</span> <span class="n">g_3</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+        <span class="n">new_column</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marks</span><span class="p">[</span><span class="s2">&quot;Excellent&quot;</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="mi">14</span> <span class="o">&lt;=</span> <span class="n">g_3</span> <span class="o">&lt;=</span> <span class="mi">17</span><span class="p">:</span>
+        <span class="n">new_column</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marks</span><span class="p">[</span><span class="s2">&quot;Good&quot;</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="mi">8</span> <span class="o">&lt;=</span> <span class="n">g_3</span> <span class="o">&lt;=</span> <span class="mi">13</span><span class="p">:</span>
+        <span class="n">new_column</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marks</span><span class="p">[</span><span class="s2">&quot;Satisfactory&quot;</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">g_3</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="n">new_column</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marks</span><span class="p">[</span><span class="s2">&quot;Unsatisfactory&quot;</span><span class="p">])</span>
+
+<span class="n">newDf</span><span class="p">[</span><span class="s2">&quot;marks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_column</span>
+<span class="n">newDf</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">newDf</span><span class="p">[[</span><span class="s2">&quot;marks&quot;</span><span class="p">,</span> <span class="s2">&quot;reason&quot;</span><span class="p">]]</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;reason&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">temp</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;reason&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;marks&quot;</span><span class="p">)</span>
+<span class="n">temp</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><ul>
+<li>The average new score was in the range of 2 to 3 (from "Satisfactory" to "Good") for each reason.</li>
+<li>The highest average score is in the reputation category. This suggests that in schools with a good reputation, children learn better than in schools chosen for other reasons</li>
+<li>Lowest average score in the "other" category</li>
+<li>The average score in the "home" category is higher than in the "course" category. This may sound strange, but it seems that children whose schools are nearby are learning better</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="&#1047;&#1072;&#1076;&#1072;&#1085;&#1080;&#1077;--11-">&#1047;&#1072;&#1076;&#1072;&#1085;&#1080;&#1077;  11 <a id="task11" /><a class="anchor-link" href="#&#1047;&#1072;&#1076;&#1072;&#1085;&#1080;&#1077;--11-">&#182;</a></h3><p>Часть из представленных в данных студентов посещали оба курса - <code>Math</code> и <code>Por</code>.</p>
+<ul>
+<li>Предложите способ идентификации студентов и определите тех, кто посещал оба курса. Сколько таких студентов?  </li>
+<li>Для этих студентов сравните оценки по двум предметам, дайте комментарий.  </li>
+</ul>
+<p><strong>Note:</strong> Столбец <code>ID</code> является уникальным идентификатором наблюдения, но не студента. Он будет уникален для каждой строки.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To find a student who has attended both courses I propose to identify the records with the same values of personal attributes.</span>
+<span class="c1"># In my opinion, personal attributes are considered to be:</span>
+<span class="n">personal_atrributes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;school&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span><span class="p">,</span> <span class="s1">&#39;school&#39;</span><span class="p">,</span> <span class="s1">&#39;reason&#39;</span><span class="p">,</span> <span class="s1">&#39;traveltime&#39;</span><span class="p">,</span>
+<span class="s1">&#39;famsize&#39;</span><span class="p">,</span> <span class="s1">&#39;Pstatus&#39;</span><span class="p">,</span> <span class="s1">&#39;Medu&#39;</span><span class="p">,</span> <span class="s1">&#39;Fedu&#39;</span><span class="p">,</span> <span class="s1">&#39;Mjob&#39;</span><span class="p">,</span> <span class="s1">&#39;Fjob&#39;</span><span class="p">,</span> <span class="s1">&#39;reason&#39;</span><span class="p">,</span> <span class="s1">&#39;guardian&#39;</span><span class="p">,</span> <span class="s1">&#39;nursery&#39;</span><span class="p">,</span> <span class="s1">&#39;higher&#39;</span><span class="p">,</span>
+<span class="s1">&#39;internet&#39;</span><span class="p">,</span> <span class="s1">&#39;romantic&#39;</span><span class="p">,</span> <span class="s1">&#39;famrel&#39;</span><span class="p">,</span> <span class="s1">&#39;goout&#39;</span><span class="p">,</span> <span class="s1">&#39;Dalc&#39;</span><span class="p">,</span> <span class="s1">&#39;Walc&#39;</span><span class="p">,</span> <span class="s1">&#39;health&#39;</span><span class="p">]</span>
+
+<span class="n">student_duplicates</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">personal_atrributes</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;number of students attending both courses: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_duplicates</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Math mean: &quot;</span><span class="p">,</span> <span class="n">student_duplicates</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">student_duplicates</span><span class="p">[</span><span class="s2">&quot;Subject&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Math&quot;</span><span class="p">][</span><span class="s2">&quot;G3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Por mean: &quot;</span><span class="p">,</span> <span class="n">student_duplicates</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">student_duplicates</span><span class="p">[</span><span class="s2">&quot;Subject&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Por&quot;</span><span class="p">][</span><span class="s2">&quot;G3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><ul>
+<li>I believe that students who attend both subjects can be identified by adding another column to our data, for example "FIO" column  </li>
+<li>As we can see, the average score of such students in Portuguese is higher than in mathematics. This may be due to the fact that people devote more time to the Portuguese language, or they are simply humanitarians by nature.</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="&#1047;&#1072;&#1076;&#1072;&#1085;&#1080;&#1077;-12">&#1047;&#1072;&#1076;&#1072;&#1085;&#1080;&#1077; 12<a class="anchor-link" href="#&#1047;&#1072;&#1076;&#1072;&#1085;&#1080;&#1077;-12">&#182;</a></h3><p>Предложите простую модель для определения (предсказания) итоговой оценки студента по 4-х балльной системе. Оцените точность предложенной модели.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+
+<span class="n">data_temp</span> <span class="o">=</span> <span class="n">numericDf</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">data_temp</span><span class="p">[</span><span class="s2">&quot;marks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">newDf</span><span class="p">[</span><span class="s2">&quot;marks&quot;</span><span class="p">]</span>
+
+<span class="n">columns_to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;marks&quot;</span><span class="p">,</span> <span class="s2">&quot;G1&quot;</span><span class="p">,</span> <span class="s2">&quot;G2&quot;</span><span class="p">,</span> <span class="s2">&quot;G3&quot;</span><span class="p">]</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">data_temp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns_to_drop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data_temp</span><span class="p">[</span><span class="s2">&quot;marks&quot;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># Scale</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># RFC</span>
+<span class="n">rfc</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">rfc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pred_rfc</span> <span class="o">=</span> <span class="n">rfc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_rfc</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_rfc</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">columns_to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;marks&quot;</span><span class="p">,</span> <span class="s2">&quot;G1&quot;</span><span class="p">,</span> <span class="s2">&quot;G2&quot;</span><span class="p">,</span> <span class="s2">&quot;G3&quot;</span><span class="p">]</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">data_temp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns_to_drop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data_temp</span><span class="p">[</span><span class="s2">&quot;marks&quot;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># Scale</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Decision Tree</span>
+<span class="n">dec</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">dec</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pred_dec</span> <span class="o">=</span> <span class="n">dec</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_rfc</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_rfc</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>Using my experience with simple prediction models in my first year of study, I tried to use Random Forest Classifier and Decision Tree to predict "marks" column. To evaluate the model's performance, I used ready-made tools from sckit-learn (sklearn.metrics.confusion_matrix)</p>
+<ul>
+<li>Results: the best result was given by RFC (probability of correct prediction = 0.4), however this model takes the value of random seed as paramert (random_state) by default, that is why each time you run the model, you may see different results, and most likely my result is not the best</li>
+<li>I also believe that the result of the model was influenced by the following parameters:</li>
+<li><strong>the size of the data set (small)</strong></li>
+<li><strong>uneven distribution of the target variable</strong> ( It is easier for the model to predict the values that are most common)</li>
+<li><strong>the presence of parameters that have a bad effect on the target variable</strong> (they can worsen the results and it is better to get rid of them at the preprocessing stage)</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="&#1047;&#1072;&#1076;&#1072;&#1085;&#1080;&#1077;-*-(&#1073;&#1086;&#1085;&#1091;&#1089;&#1085;&#1086;&#1077;)">&#1047;&#1072;&#1076;&#1072;&#1085;&#1080;&#1077; * (&#1073;&#1086;&#1085;&#1091;&#1089;&#1085;&#1086;&#1077;)<a class="anchor-link" href="#&#1047;&#1072;&#1076;&#1072;&#1085;&#1080;&#1077;-*-(&#1073;&#1086;&#1085;&#1091;&#1089;&#1085;&#1086;&#1077;)">&#182;</a></h3><p>Дополнительное исследование данных и выводы положительно скажутся на оценке.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="your-code-here">your code here<a class="anchor-link" href="#your-code-here">&#182;</a></h1>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
